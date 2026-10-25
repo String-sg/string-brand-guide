@@ -1,0 +1,28 @@
+name: Release String UI
+on:
+  push:
+    tags: ['ui-v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/release-ui.mjs
+        env:
+          UI_RELEASE_TAG: ${{ github.ref_name }}
+      - run: gh release create "$UI_RELEASE_TAG" artifacts/*.tgz --verify-tag --title "$UI_RELEASE_TAG" --generate-notes
+        env:
+          UI_RELEASE_TAG: ${{ github.ref_name }}
+          GH_TOKEN: ${{ github.token }}
+  update-consumers:
+    needs: release
+    uses: ./.github/workflows/update-consumers.yml
+    with:
+      tag: ${{ github.ref_name }}
+    secrets:
+      UI_CONSUMER_TOKEN: ${{ secrets.UI_CONSUMER_TOKEN }}
