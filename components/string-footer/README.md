@@ -32,3 +32,7 @@ Captured from the String ID integration at 1440px and 375px, with local API resp
 ## Existing shell migration PRs
 
 The earlier String ID #82 and String Skills #8 PRs introduce `@string-sg/ui` header/footer wrappers. Their 0.1.0 `AppFooter` is only a generic container; it does not contain this footer's content. The new footer integrations replace the application footer independently. When combining those PRs, retain the earlier `AppHeader`/`Brand` changes and use one `StringFooter` after main content, removing the old `AppFooter` import and wrapper. Do not nest the two footers. This component is kept in the existing brand-guide repository so later packaging can use the same canonical source.
+
+## Navigation and icon conventions
+
+Explore String links to Products (`https://string.sg/products/`), Skills (`https://skills.string.sg/`, explained as “for AI, e.g. Claude, Codex”), and Metrics (`https://reports.string.sg/`). Bingo is not promoted in this navigation. The top-right Sign up CTA points to `https://id.string.sg/`. Medium, LinkedIn, Instagram and TikTok use icon-only links with accessible names, title tooltips and keyboard focus. Inline icons come from [Bootstrap Icons](https://github.com/twbs/icons), distributed through react-icons 5.7.0; the upstream MIT licence is included here and vendored with each consumer. No icon font, runtime icon library or remote icon request is needed.

@@ -22,12 +22,14 @@ const source = dirname(fileURLToPath(import.meta.url));
 const template = await readFile(join(source, 'footer.html'), 'utf8');
 const css = await readFile(join(source, 'footer.css'), 'utf8');
 const logo = await readFile(join(source, 'string-logo.svg'), 'utf8');
+const iconLicense = await readFile(join(source, 'bootstrap-icons-LICENSE.txt'), 'utf8');
 const html = template
   .replace('{{source}}', `https://github.com/${config.repo}`)
   .replace('{{conduct}}', product === 'id' ? '        <a href="/conduct">Code of Conduct</a>' : '');
 const hash = createHash('sha256').update(template).update(css).update(logo).digest('hex');
 const files = new Map([
   ['public/string-footer/string-logo.svg', logo],
+  ['public/string-footer/bootstrap-icons-LICENSE.txt', iconLicense],
   ['string-footer.json', JSON.stringify({ version: '1.0.0', source: 'https://github.com/String-sg/string-brand-guide/tree/main/components/string-footer', sha256: hash, product }, null, 2) + '\n'],
 ]);
 if (config.framework === 'html') {
