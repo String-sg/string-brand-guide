@@ -5,10 +5,10 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 const products = {
-  landing: { repo: 'String-sg/string-sg-landing', name: 'string-site', framework: 'astro' },
-  id: { repo: 'ghostleek/string-id', name: 'string-id', framework: 'react' },
-  skills: { repo: 'String-sg/str-skills', name: 'string-skills', framework: 'react' },
-  bingo: { repo: 'String-sg/bingo-string', name: 'string-bingo', framework: 'html' },
+  landing: { name: 'string-site', framework: 'astro' },
+  id: { name: 'string-id', framework: 'react' },
+  skills: { name: 'string-skills', framework: 'react' },
+  bingo: { name: 'string-bingo', framework: 'html' },
 };
 const [product, target, flag] = process.argv.slice(2);
 if (!products[product] || !target || (flag && flag !== '--check')) {
@@ -24,7 +24,6 @@ const css = await readFile(join(source, 'footer.css'), 'utf8');
 const logo = await readFile(join(source, 'string-logo.svg'), 'utf8');
 const iconLicense = await readFile(join(source, 'bootstrap-icons-LICENSE.txt'), 'utf8');
 const html = template
-  .replace('{{source}}', `https://github.com/${config.repo}`)
   .replace('{{conduct}}', product === 'id' ? '        <a href="/conduct">Code of Conduct</a>' : '');
 const hash = createHash('sha256').update(template).update(css).update(logo).digest('hex');
 const files = new Map([
