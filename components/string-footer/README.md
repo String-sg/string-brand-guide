@@ -17,7 +17,7 @@ Requires Node.js 20+. Add `--check` to detect drift without writing. The script 
 
 Make shared changes here first, regenerate consumers, run each app's checks and review the diffs in separate PRs. Increment the version in the script and CSS comment for the next release. Pin this branding checkout to the reviewed commit when reproducing a release; no product build fetches mutable upstream code. The branding PR must merge before the documentation links to `main` resolve.
 
-The footer includes product navigation, community links, the public [Code of Conduct](https://id.string.sg/conduct), Privacy, Terms, and each product's GitHub source. Links use the current tab; the source arrow is decorative. Fonts use the app's existing font setup and system fallbacks. Keyboard focus, forced-colour focus, wrapping and a two-column mobile layout are included. Application actions, signing gates, integration endpoints and creator credits remain product-owned.
+The footer includes product navigation, community links, Medium, LinkedIn, Instagram, TikTok, Privacy, Terms, and each product's GitHub source. Only String ID includes Code of Conduct, pointing to its local `/conduct` route. TikTok uses the owner-confirmed `https://www.tiktok.com/@string.sg` profile. Links use the current tab; the source arrow is decorative. Fonts use the app's existing font setup and system fallbacks. Keyboard focus, forced-colour focus, wrapping and a two-column mobile layout are included. Application actions, signing gates, integration endpoints and creator credits remain product-owned.
 
 Reusable agent guidance: [string-footer skill](../../.claude/skills/string-footer/SKILL.md). To install it locally, copy that folder into your agent's skills directory.
 

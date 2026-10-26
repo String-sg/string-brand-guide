@@ -22,7 +22,9 @@ const source = dirname(fileURLToPath(import.meta.url));
 const template = await readFile(join(source, 'footer.html'), 'utf8');
 const css = await readFile(join(source, 'footer.css'), 'utf8');
 const logo = await readFile(join(source, 'string-logo.svg'), 'utf8');
-const html = template.replace('{{source}}', `https://github.com/${config.repo}`);
+const html = template
+  .replace('{{source}}', `https://github.com/${config.repo}`)
+  .replace('{{conduct}}', product === 'id' ? '        <a href="/conduct">Code of Conduct</a>' : '');
 const hash = createHash('sha256').update(template).update(css).update(logo).digest('hex');
 const files = new Map([
   ['public/string-footer/string-logo.svg', logo],

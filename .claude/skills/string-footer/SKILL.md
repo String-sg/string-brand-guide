@@ -7,7 +7,7 @@ description: Adopt or update the shared String product footer across String webs
 
 The source of truth is [String-sg/string-brand-guide/components/string-footer](https://github.com/String-sg/string-brand-guide/tree/main/components/string-footer). Read its README and inspect the target repository's instructions before editing.
 
-The component uses String's mint logo, charcoal background, Montserrat body and Space Grotesk labels. Keep shared product, community, Code of Conduct, privacy, terms and repository source links consistent. Code of Conduct points to the public `https://id.string.sg/conduct` page; signing and access controls belong to String ID.
+The component uses String's mint logo, charcoal background, Montserrat body and Space Grotesk labels. Keep shared product, community, social, privacy, terms and repository source links consistent. Social destinations are Medium (`https://medium.com/string`), LinkedIn (`https://www.linkedin.com/company/77759625/`), Instagram (`https://www.instagram.com/stringedu/`) and TikTok (`https://www.tiktok.com/@string.sg`). Only String ID shows Code of Conduct, using the local `/conduct` route. Do not add that policy link to the other products. Signing and access controls remain owned by String ID.
 
 For the four supported products, run the reviewed branding checkout's script:
 
