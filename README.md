@@ -70,3 +70,7 @@ python3 .claude/skills/string-brand/scripts/contrast.py --audit   # re-verify th
 The palette values, logo pairings, and font list come straight from the assets in this repo.
 The tint/shade ramps, type scale, and the Space Grotesk / Montserrat display-body split are
 conventions the skill adds on top, and it flags them as such where they appear.
+
+## Shared product footer
+
+[Footer source and update script](components/string-footer/README.md) for Astro, React and static HTML products. [Reusable footer skill](.claude/skills/string-footer/SKILL.md).
