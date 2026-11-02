@@ -73,4 +73,4 @@ conventions the skill adds on top, and it flags them as such where they appear.
 
 ## Shared product footer
 
-[Footer source and update script](components/string-footer/README.md) for Astro, React and static HTML products. [Reusable footer skill](.claude/skills/string-footer/SKILL.md).
+[Footer source and update script](components/string-footer/README.md) for Astro, React and static HTML products. [Canonical footer skill](https://github.com/String-sg/string-footer/tree/main/.claude/skills/string-footer).
