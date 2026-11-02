@@ -1,0 +1,40 @@
+name: Propose shared UI consumer updates
+on:
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+    secrets:
+      UI_CONSUMER_TOKEN:
+        required: true
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Immutable ui-vX.Y.Z release tag
+        required: true
+permissions:
+  contents: read
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: [String-sg/reports, ghostleek/string-id, String-sg/str-skills]
+    env:
+      GH_TOKEN: ${{ secrets.UI_CONSUMER_TOKEN }}
+      UI_RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - run: test -n "$GH_TOKEN" || { echo 'Configure the existing cross-repository UI update credential before activation.'; exit 1; }
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          path: consumer
+          token: ${{ secrets.UI_CONSUMER_TOKEN }}
+      - run: gh release download "$UI_RELEASE_TAG" --repo String-sg/string-brand-guide --pattern '*.tgz' --dir artifacts
+      - run: git config --global user.name 'String UI updates' && git config --global user.email 'ui-updates@users.noreply.github.com'
+      - run: node scripts/update-ui-consumers.mjs --archive artifacts/string-sg-ui-"${UI_RELEASE_TAG#ui-v}".tgz --repo consumer --open-prs
